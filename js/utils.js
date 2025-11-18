@@ -1,7 +1,8 @@
-// Ambil video ID dari query string
-export function getVideoIdFromQuery() {
-  const params = new URLSearchParams(window.location.search);
-  return parseInt(params.get('id')) || 1; // default ID = 1
+// Ambil video ID dari path modern /f/1
+export function getVideoIdFromPath() {
+  const pathParts = window.location.pathname.split('/');
+  // pathParts = ["", "f", "1"]
+  return parseInt(pathParts[2]) || 1;
 }
 
 // Load daftar video dari JSON
