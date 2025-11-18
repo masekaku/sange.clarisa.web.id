@@ -1,0 +1,11 @@
+.double-tap-indicator {
+  position: absolute;
+  color: white;
+  font-size: 2rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
