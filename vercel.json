@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/f/:id*",
-      "destination": "/index.html"
+      "source": "/f/1",
+      "destination": "index.html?id=1"
     }
   ]
 }
