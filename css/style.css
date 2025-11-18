@@ -1,7 +1,32 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: black; /* sisi kosong berwarna hitam */
+}
+
+#video-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black; /* sisi kosong tetap hitam */
+}
+
+#video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* tampilkan video utuh tanpa memotong */
+  background: black;
+}
+
 .double-tap-indicator {
   position: absolute;
   color: white;
-  font-size: 2rem;
+  font-size: 3rem;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
