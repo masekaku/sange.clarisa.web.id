@@ -1,10 +1,10 @@
-import { getVideoIdFromPath, loadVideoList } from './utils.js';
+import { getVideoIdFromQuery, loadVideoList } from './utils.js';
 
 const video = document.getElementById('video');
 const wrapper = document.getElementById('video-wrapper');
 const tapIndicator = document.getElementById('tap-indicator');
 
-const videoId = getVideoIdFromPath();
+const videoId = getVideoIdFromQuery();
 
 // Double-tap play/pause di mobile
 let lastTap = 0;
@@ -25,7 +25,7 @@ wrapper.addEventListener('touchend', () => {
   lastTap = currentTime;
 });
 
-// Load video sesuai ID
+// Load video dari videos.json sesuai ID
 loadVideoList().then(videos => {
   const selectedVideo = videos.find(v => v.id === videoId);
   if (selectedVideo) {
