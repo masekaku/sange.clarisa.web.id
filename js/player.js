@@ -3,7 +3,6 @@ import { getVideoIdFromPath, loadVideoList } from './utils.js';
 const video = document.getElementById('video');
 const wrapper = document.getElementById('video-wrapper');
 const tapIndicator = document.getElementById('tap-indicator');
-const qualitySelect = document.getElementById('quality-select');
 
 let videos = [];
 let videoId = getVideoIdFromPath();
@@ -41,42 +40,13 @@ wrapper.addEventListener('touchend', () => {
   lastTap = currentTime;
 });
 
-// Load video list dari JSON
+// Load video list dari JSON dan set video sesuai ID
 loadVideoList().then(data => {
   videos = data;
 
-  // Populate <source> tags
-  videos.forEach(v => {
-    const source = document.createElement('source');
-    source.src = v.url;
-    source.type = 'video/mp4';
-    source.setAttribute('data-id', v.id);
-    video.appendChild(source);
-
-    // Populate quality selector
-    const option = document.createElement('option');
-    option.value = v.id;
-    option.textContent = `Video ${v.id}`;
-    qualitySelect.appendChild(option);
-  });
-
-  // Set video berdasarkan ID
   const selectedVideo = videos.find(v => v.id === videoId);
   if (selectedVideo) {
     video.src = selectedVideo.url;
     video.load();
-  }
-});
-
-// Ganti video berdasarkan select
-qualitySelect.addEventListener('change', () => {
-  const selectedId = parseInt(qualitySelect.value);
-  const selectedVideo = videos.find(v => v.id === selectedId);
-  if (selectedVideo) {
-    const currentTime = video.currentTime;
-    const isPaused = video.paused;
-    video.src = selectedVideo.url;
-    video.currentTime = currentTime;
-    if (!isPaused) video.play();
   }
 });
