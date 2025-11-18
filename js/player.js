@@ -6,7 +6,7 @@ const tapIndicator = document.getElementById('tap-indicator');
 
 const videoId = getVideoIdFromPath();
 
-// Double-tap play/pause (mobile)
+// Double-tap play/pause di mobile
 let lastTap = 0;
 wrapper.addEventListener('touchend', () => {
   const currentTime = new Date().getTime();
@@ -25,12 +25,12 @@ wrapper.addEventListener('touchend', () => {
   lastTap = currentTime;
 });
 
-// Load video list dan set video sesuai ID
+// Load video sesuai ID
 loadVideoList().then(videos => {
   const selectedVideo = videos.find(v => v.id === videoId);
-  if(selectedVideo) {
+  if (selectedVideo) {
     video.src = selectedVideo.url;
     video.load();
-    video.play().catch(() => {}); // autoplay mungkin butuh gesture
+    video.play().catch(() => {}); // autoplay mungkin perlu gesture
   }
 });
