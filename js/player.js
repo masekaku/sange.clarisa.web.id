@@ -1,12 +1,12 @@
-import { getVideoIdFromQuery, loadVideoList } from './utils.js';
+import { getVideoIdFromPath, loadVideoList } from './utils.js';
 
 const video = document.getElementById('video');
 const wrapper = document.getElementById('video-wrapper');
 const tapIndicator = document.getElementById('tap-indicator');
 
-const videoId = getVideoIdFromQuery();
+const videoId = getVideoIdFromPath();
 
-// Double-tap play/pause di mobile
+// Double-tap play/pause mobile
 let lastTap = 0;
 wrapper.addEventListener('touchend', () => {
   const currentTime = new Date().getTime();
@@ -31,6 +31,6 @@ loadVideoList().then(videos => {
   if (selectedVideo) {
     video.src = selectedVideo.url;
     video.load();
-    video.play().catch(() => {}); // autoplay mungkin perlu gesture
+    video.play().catch(() => {});
   }
 });
