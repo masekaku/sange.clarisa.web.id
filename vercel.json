@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/f/:id",
-      "destination": "/index.html"
+      "destination": "/index.html?id=:id"
     }
   ]
 }
