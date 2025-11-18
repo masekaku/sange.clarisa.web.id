@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Video Player</title>
+<title>Fullscreen Video Player</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="m-0 p-0 w-screen h-screen bg-black flex justify-center items-center overflow-hidden">
+<body>
 
-<div id="video-wrapper" class="relative w-full h-full flex justify-center items-center bg-black overflow-hidden">
-  <video id="video" controls preload="metadata" class="max-w-full max-h-full object-contain"></video>
+<div id="video-wrapper">
+  <video id="video" controls autoplay muted playsinline></video>
   <div id="tap-indicator" class="double-tap-indicator">▶️</div>
 </div>
 
