@@ -4,22 +4,7 @@ const video = document.getElementById('video');
 const wrapper = document.getElementById('video-wrapper');
 const tapIndicator = document.getElementById('tap-indicator');
 
-let videos = [];
-let videoId = getVideoIdFromPath();
-
-// Portrait / Landscape layout
-function updateLayout() {
-  if (video.videoHeight > video.videoWidth) {
-    video.classList.remove('w-full', 'h-auto');
-    video.classList.add('h-full', 'w-auto');
-  } else {
-    video.classList.remove('h-full', 'w-auto');
-    video.classList.add('w-full', 'h-auto');
-  }
-}
-
-video.addEventListener('loadedmetadata', updateLayout);
-window.addEventListener('resize', updateLayout);
+const videoId = getVideoIdFromPath();
 
 // Double-tap play/pause (mobile)
 let lastTap = 0;
@@ -40,13 +25,12 @@ wrapper.addEventListener('touchend', () => {
   lastTap = currentTime;
 });
 
-// Load video list dari JSON dan set video sesuai ID
-loadVideoList().then(data => {
-  videos = data;
-
+// Load video list dan set video sesuai ID
+loadVideoList().then(videos => {
   const selectedVideo = videos.find(v => v.id === videoId);
-  if (selectedVideo) {
+  if(selectedVideo) {
     video.src = selectedVideo.url;
     video.load();
+    video.play().catch(() => {}); // autoplay mungkin butuh gesture
   }
 });
