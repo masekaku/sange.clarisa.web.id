@@ -1,4 +1,4 @@
-// Ambil video ID dari URL path: /f/:id
+// Ambil video ID dari path: /f/:id
 export function getVideoIdFromPath() {
   const pathParts = window.location.pathname.split('/');
   return parseInt(pathParts[2]) || 1; // default 1
