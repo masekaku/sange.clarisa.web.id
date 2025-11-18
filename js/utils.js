@@ -4,12 +4,12 @@ export function getVideoIdFromPath() {
   return parseInt(pathParts[2]) || 1;
 }
 
-// Load JSON daftar video
+// Load daftar video dari JSON
 export async function loadVideoList(jsonPath = 'videos.json') {
   try {
     const res = await fetch(jsonPath);
     return await res.json();
-  } catch(err) {
+  } catch (err) {
     console.error('Failed to load videos.json:', err);
     return [];
   }
